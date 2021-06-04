@@ -7,13 +7,15 @@ var randomNumber = function(min, max) {
   return value;
 };
 
+// function to check if player wants to fight or skip
 var fightOrSkip = function() {
   // ask player if they'd like to fight or skip using fightOrSkip function
   var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
-// Conditional Recursive Function Call
+// Conditional Recursive Function Call  // validate prompt answer
 if (promptFight === "" || promptFight === null) {
   window.alert("You need to provide a valid answer! Please try again.");
+      // use return to call it again and stop the rest of this function from running
   return fightOrSkip();
 }
   // if player picks "skip" confirm and then stop the loop
@@ -117,6 +119,9 @@ var startGame = function() {
 
   // fight each enemy robot by looping over them and fighting them one at a time
   for (var i = 0; i < enemyInfo.length; i++) {
+    // check player stats
+    console.log(playerInfo);
+
     // if player is still alive, keep fight next enemy
     if (playerInfo.health > 0) {
       // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -178,8 +183,7 @@ var endGame = function() {
 
   if (playAgainConfirm) {
     startGame();
-  } 
-  else {
+  } else {
     window.alert("Thank you for playing Robot Gladiators! Come back soon!");
   }
 };
@@ -213,10 +217,6 @@ var shop = function() {
   }
 };
 
-/* END GAME FUNCTIONS */
-
-/* GAME INFORMATION / VARIABLES */
-
 // function to set name
 var getPlayerName = function() {
   var name = "";
@@ -227,6 +227,9 @@ var getPlayerName = function() {
   return name;
  };
 
+/* END GAME FUNCTIONS */
+
+/* GAME INFORMATION / VARIABLES */
 
 // player information
 var playerInfo = {
@@ -276,11 +279,6 @@ var enemyInfo = [
     attack: randomNumber(10, 14)
   }
 ];
-
-console.log(enemyInfo);
-console.log(enemyInfo[0]);
-console.log(enemyInfo[0].name);
-console.log(enemyInfo[0]['attack']);
 
 /* END GAME INFORMATION / VARIABLES */
 
